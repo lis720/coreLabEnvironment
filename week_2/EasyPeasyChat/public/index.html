@@ -1,0 +1,249 @@
+<!doctype html>
+
+
+<!-- dropdowns-->
+<div class="button-menu">
+<span class="custom-dropdown small">
+    <select>    
+        <option>Choose Chat Space</option>
+        <option>Forest</option>  
+        <option>Ocean</option>
+        <option>Underground</option>
+        <option>Outerspace</option>
+        <option>Urban indoor</option>
+        <option>Urban outdoor</option>
+    </select>
+</span>
+<span class="custom-dropdown small">
+    <select>    
+        <option>Very Human me</option>
+        <option>Skull</option>
+        <option>Monalisa</option>
+        <option>Ironman</option>
+    </select>
+</span>
+
+
+<!-- camera here-->
+<div class="button-menu">
+<video onclick="snapshot(this);" id="video" width="300" height="300" controls autoplay></video>
+<div class="button-menu">
+<button onclick="startWebcam();">Start Chat</button>
+<button onclick="stopWebcam();">Stop Chat</button>
+
+
+<style media="screen" type="text/css">
+
+body {
+  background: #2a2a2b;
+  color: #fff;
+  text-align: center;
+  font-family: Arial, Helvetica;
+}
+
+.big {
+  font-size: 1.2em;
+}
+
+
+.square {
+  width: .7em;
+  height: .7em;
+  margin: .5em;
+  display: inline-block;
+}
+
+/* Custom dropdown */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px; /* demo only */
+}
+
+.custom-dropdown select {
+  background-color: #1abc9c;
+  color: #fff;
+  font-size: inherit;
+  padding: .5em;
+  padding-right: 2.5em;	
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  text-overflow: '';
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+} 
+
+.custom-dropdown::before,
+.custom-dropdown::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.custom-dropdown::after { /*  Custom dropdown arrow */
+  content: "\25BC";
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  right: 1.2em;
+  top: 50%;
+  margin-top: -.5em;
+}
+
+.custom-dropdown::before { /*  Custom dropdown arrow cover */
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.custom-dropdown select[disabled] {
+  color: rgba(0,0,0,.3);
+}
+
+.custom-dropdown select[disabled]::after {
+  color: rgba(0,0,0,.1);
+}
+
+.custom-dropdown::before {
+  background-color: rgba(0,0,0,.15);
+}
+
+.custom-dropdown::after {
+  color: rgba(0,0,0,.4);
+}
+
+
+
+</style>
+
+<h1>Welcome to OTHER-KIN Chat</h1>
+
+
+<!--
+	Username input. 
+	Submitting name executes setClientName function,
+	emitting the 'setClientName' message to the server over sockets.
+-->
+
+<div style="margin:100px;">
+<form action="javascript:setClientName();"  id="alias">
+	<h4> Please choose your username.</h4>
+	<br>
+	Username: 
+	<input type="text" name="Nickname" value="OTHER-KIN">
+	<br>
+	<input type="submit" value="Submit">
+</form>
+</div>
+
+
+<!-- Chatroom          -->
+<div id="chatroom" style="
+			height: 350px;
+			display: none; 	
+			background-color: #D3A3C3;
+			margin: 50px;
+			position: relative;"  >
+	<div style="padding:10px; height: 300px; overflow-y: scroll" id=chatbox>You have entered the chatroom</div>
+	<div style=" width:100%; position:absolute; bottom:0;"> 
+		<form action="javascript:clientMessage();" id="inputMessage">
+			<input style="
+				margin: 12px;
+                bottom: 12; 
+                width: 80%; 
+                font-size: 12px;
+                padding:5px;" type="text" name="messageContent" value="Type Here" >
+           	<input type="submit" value="Submit">
+
+		</form>
+	</div>
+</div>
+
+<!-- Username input                -->
+
+
+
+<script src = "/socket.io/socket.io.js"></script>
+<script src = "/main.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+<style media="screen" type="text/css">
+
+body {
+	
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  text-align: center;
+
+	width: 80wh;
+	height: 90vh;
+	color: #fff;
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 300%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+h1,
+h2,
+h6 {
+	font-family: 'Open Sans';
+	font-weight: 300;
+	text-align: center;
+	position: absolute;
+	top: 45%;
+	right: 0;
+	left: 0;
+}
+
+</style>
+

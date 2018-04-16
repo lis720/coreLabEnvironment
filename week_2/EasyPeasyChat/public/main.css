@@ -1,0 +1,134 @@
+body {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  text-align: center;
+}
+
+video {
+  border: 5px solid black;
+}
+
+canvas {
+  border: 1px solid black;
+}
+
+.button-menu {
+  margin-top: 10px;
+}
+/* you can import CSS from other pens - we'll import color and typography styles from this pen */
+// @import url(//codepen.io/lis720/pen/jZyGKz.css);
+
+body {
+  background: #ffaa32;
+  color: #fff;
+  font-family: "Oswald", Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  letter-spacing: 0.02em;
+  margin: 2em 0;
+}
+
+.links {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.link {
+  display: inline-block;
+  vertical-align: top;
+  width: 100px;
+  height: 34px;
+  line-height: 36px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  letter-spacing: 0.1em;
+  text-align: center;
+  font-size: 0.8rem;
+  margin: 10px;
+  position: relative;
+ 
+  span {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+  }
+}
+
+.wipe, .slide, .opacity {
+  border: 2px solid #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.opacity {
+  transition: background-color 0.3s linear, color 0.3s linear;
+  background: rgba(255,255,255,0);
+  
+  &:hover {
+    color: #124a58;
+    background: rgba(255,255,255,0.9);
+  }
+}
+
+.wipe {
+  transition: color 0.3s ease-out;
+  
+  &::after {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #fff;
+    content: " ";
+    position: absolute;
+    top: 0;
+    transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);;
+    transform: translateY(34px);
+    z-index: -1;
+  }
+  
+  &:hover {
+    color: #124a58;
+    
+    &::after {
+      transform: translateY(0px);
+    }
+  }
+}
+
+.underline {
+  border: 2px solid transparent;
+  
+  &::after {
+    width: 0%;
+    height: 2px;
+    display: block;
+    background-color: #fff;
+    content: " ";
+    position: absolute;
+    top: 34px;
+    left: 50%;
+    transition: left 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), width 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  
+  &:hover {
+    &::after {
+      width: 100%;
+      height: 2px;
+      display: block;
+      background-color: #fff;
+      content: " ";
+      position: absolute;
+      top: 34px;
+      left: 0;
+    }
+  }
+}
